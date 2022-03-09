@@ -17,3 +17,7 @@ class ToDo(models.Model):
     is_active = models.BooleanField(default=True)
     project = models.ForeignKey(Project, models.PROTECT)
     author = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+
+    def delete(self):
+        self.is_active = False if self.is_active else True
+        self.save()
