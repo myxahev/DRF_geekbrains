@@ -1,17 +1,17 @@
-import React from 'react';
+import React from "react";
+import App from "../App";
 
-
-const UserItem = ({ user }) => {
+const UserItem = ({user}) => {
     return (
         <tr>
-            <td>
-                {user.username}
-            </td>
             <td>
                 {user.first_name}
             </td>
             <td>
                 {user.last_name}
+            </td>
+            <td>
+                {user.birthday_year}
             </td>
             <td>
                 {user.email}
@@ -20,17 +20,17 @@ const UserItem = ({ user }) => {
     )
 }
 
-const UserList = ({ users }) => {
+const UserList = ({users}) => {
     return (
         <table>
-            <th>
-                User Name
-            </th>
             <th>
                 First name
             </th>
             <th>
-                Last Name
+                Last name
+            </th>
+            <th>
+                Birthday year
             </th>
             <th>
                 Email

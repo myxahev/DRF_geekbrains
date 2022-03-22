@@ -3,7 +3,9 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <p>© Dmitry Mukhachev 2021 Geekbrains</p>
+        <footer>
+            <p>© Dmitry Mukhachev 2022 Geekbrains</p>
+        </footer>
     )
 }
 
