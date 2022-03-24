@@ -11,6 +11,13 @@ class ProjectViewSet(ModelViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
 
+    def get_queryset(self):
+        name = self.request.query_params.get('name', '')
+        projects = Project.objects.all()
+        if name:
+            projects = projects.filter(name__contains=name)
+        return projects
+
 
 class ToDoViewSet(ModelViewSet):
     queryset = ToDo.objects.all()
