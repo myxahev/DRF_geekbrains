@@ -20,6 +20,7 @@ from rest_framework.routers import DefaultRouter
 from userapp.views import UsersCustomViewSet
 from main.views import ProjectViewSet, ToDoViewSet
 from rest_framework.authtoken import views
+from rest_framework_simplejwt.views import TokenVerifyView
 
 router = DefaultRouter()
 router.register('users', UsersCustomViewSet)
@@ -31,6 +32,7 @@ urlpatterns = [
     path("api-auth/", include("rest_framework.urls")),
     path("api/", include(router.urls)),
     path('api-token-auth/', views.obtain_auth_token),
+    path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
 ]
 
 
