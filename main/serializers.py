@@ -16,3 +16,8 @@ class ToDoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = ToDo
         exclude = ['is_active']
+
+class ToDoSerializerBase(serializers.ModelSerializer):
+    class Meta:
+        model = ToDo
+        fields = '__all__'

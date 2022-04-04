@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.renderers import JSONRenderer, BrowsableAPIRenderer
 from rest_framework.viewsets import ModelViewSet
 from .models import Project, ToDo
-from .serializers import ProjectSerializer, ToDoSerializer
+from .serializers import ProjectSerializer, ToDoSerializer, ToDoSerializerBase
 from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
@@ -24,3 +24,8 @@ class ProjectViewSet(ModelViewSet):
 class ToDoViewSet(ModelViewSet):
     queryset = ToDo.objects.all()
     serializer_class = ToDoSerializer
+
+    def get_serializer_class(self):
+        if self.request.method in ['GET']:
+            return ToDoSerializer
+        return ToDoSerializerBase
