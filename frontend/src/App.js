@@ -72,7 +72,7 @@ class App extends React.Component {
 
     deleteTodo(id) {
         const headers = this.get_headers()
-        axios.delete('http://localhost:8000/api/todos/${id}', {headers})
+        axios.delete(`http://localhost:8000/api/todos/${id}`, {headers})
             .then(response => {
                 this.setState({todos: this.state.todos.filter((todo) => todo.id !== id)})
             }).catch(error => console.log(error))
@@ -80,7 +80,7 @@ class App extends React.Component {
 
     deleteProject(id) {
         const headers = this.get_headers()
-        axios.delete('http://127.0.0.1:8000/api/projects/${id}', {headers})
+        axios.delete(`http://127.0.0.1:8000/api/projects/${id}`, {headers})
             .then(response => {
                 this.setState({projects: this.state.projects.filter((item) => item.id !== id)})
             }).catch(error => console.log(error))
@@ -89,7 +89,7 @@ class App extends React.Component {
     createTodo(text, project, user) {
         const headers = this.get_headers()
         const data = {text: text, project: project, user: user}
-        axios.post(`http://127.0.0.1:8000/api/todos/`, data, {headers})
+        axios.post('http://127.0.0.1:8000/api/todos/', data, {headers})
             .then(response => {
                 let new_todo = response.data
                 const project = this.state.projects.filter((item) => item.id === new_todo.project)[0]
